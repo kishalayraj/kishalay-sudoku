@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    
+ 
+    
+<script type="text/javascript">
+var intervalhandle;
+
+var stopflag = false;
+
+var hourcounter = 0;
+var minutecounter = 0;
+var secondcounter = 0;
+var tenthsecondcounter = 0;
+var hundredthsecondcounter = 0;
+
+function starttimer() {
+
+	stopflag = false;
+
+}
+
+function stoptimer() {
+
+	stopflag = true;
+
+} 
+
+function resettimer() {
+
+	hourcounter = 0;
+	document.getElementById("hourelement").innerHTML= hourcounter;
+	minutecounter = 0;
+	document.getElementById("minuteelement").innerHTML= minutecounter;
+	secondcounter = 0;
+	document.getElementById("secondelement").innerHTML= secondcounter;
+	tenthsecondcounter = 0;
+	hundredthsecondcounter = 0;
+
+} 
+
+function checktimedispatcher() {
+
+	var currentdate=new Date();
+	var currenttime= currentdate.toLocaleTimeString();
+
+if (stopflag == true) {
+  return;
+} 
+hundredthsecondcounter = hundredthsecondcounter +1;
+if ( (hundredthsecondcounter%10) == 0 ) {
+  tenthsecondcounter = tenthsecondcounter +1;
+  if ( (tenthsecondcounter%10) == 0) {
+    secondcounter = secondcounter + 1;
+    document.getElementById("secondelement").innerHTML= secondcounter;
+    if ( (secondcounter%60) == 0) {
+      minutecounter = minutecounter + 1;
+      document.getElementById("minuteelement").innerHTML= minutecounter;
+      if ( (minutecounter%60) == 0) {
+        hourcounter = hourcounter + 1;
+        document.getElementById("hourelement").innerHTML= hourcounter;
+      } 
+    } 
+  } 
+} 
+
+}
+
+
+</script>
+    
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+      blockquote {
+        margin-bottom: 10px;
+        border-left-color: #bbb;
+      }
+      form {
+        margin-top: 10px;
+      }
+      .form-signin input[type="text"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+      .row {
+        margin-left: 0px;
+        margin-top: 10px;
+        overflow: scroll;
+      }
+      
+      root { 
+		display: block;
+	}
+
+	body {margin:1pt;}
+	body,td,.plain {font-family:arial,sans-serif; color:#222222; font-size:12pt;}
+	.tm {margin-top: 8pt; margin-bottom:0;}
+	table,td {padding:0pt;}
+	.stat {color:#990000; font-size:10pt; font-weight:bold;}
+	.reset {font-size:8pt; color:#990000;}
+	input.reset {border:solid 1px; background-color:transparent; padding:0pt;}
+
+	a:link,a:active,a:visited {color:#3333FF; text-decoration:none;}
+
+
+	.d0,.d1,.d2,.d3,.s0,.s1,.s2,.s3,.u0,.u1,.u2,.u3,.w0,.w1,.w2,.w3,.v0,.v1,.v2,.v3 {border: solid 0 #fff; text-align:center; margin: 0pt; width:24pt;}
+	.s0,.s1,.s2,.s3 {font-size:18pt; font-family:times,"times new roman",serif; color:#000000;}
+	.u0,.u1,.u2,.u3 {font-size:28pt; font-family:times,"times new roman",serif; color:#000000;}
+	.d0,.d1,.d2,.d3 {font-size:16pt; font-family:"lucida handwriting","comic sans ms",cursive; color:#7777DD;}
+	.w0,.w1,.w2,.w3 {font-size:10pt; font-family:"lucida handwriting","comic sans ms",cursive; color:#338833;}
+	.v0,.v1,.v2,.v3 {font-size:7pt; font-family:"lucida handwriting","comic sans ms",cursive; color:#338833;}
+
+	.d0,.s0,.u0,.w0,.v0 {background-color: transparent;}
+
+	.d1,.s1,.u1,.w1,.v1,.c1,.e1,.f1,.g1,.j1,.k1,.l1,.m1,.n1,.p1,.q1,.r1 {background-color: #FFBFBF;}
+	.d2,.s2,.u2,.w2,.v2,.c2,.e2,.f2,.g2,.j2,.k2,.l2,.m2,.n2,.p2,.q2,.r2 {background-color: #FF7F7F;}
+	.d3,.s3,.u3,.w3,.v3,.c3,.e3,.f3,.g3,.j3,.k3,.l3,.m3,.n3,.p3,.q3,.r3 {background-color: #FF3F3F;}
+
+	.c0,.c1,.c2,.c3,.e0,.e1,.e2,.e3,.f0,.f1,.f2,.f3,.g0,.g1,.g2,.g3 {width:35pt; height:40pt; vertical-align:middle; text-align:center; font-size:18pt; font-family:times,serif;}
+	.j0,.j1,.j2,.j3,.k0,.k1,.k2,.k3,.l0,.l1,.l2,.l3,.m0,.m1,.m2,.m3 {width:32pt; height:32pt; vertical-align:middle; text-align:center; font-size:18pt; font-family:times,serif;}
+	.n0,.n1,.n2,.n3,.p0,.p1,.p2,.p3,.q0,.q1,.q2,.q3,.r0,.r1,.r2,.r3 {width:44pt; height:44pt; vertical-align:middle; text-align:center; font-size:28pt; font-family:times,serif;}
+
+	.normal {border-collapse:collapse; border: #666699 solid 3px; background-color:#FFFFFF;}
+	.pause {border-collapse:collapse; border: #666699 solid 3px; background-color:#7777DD;}
+	.c0,.e0,.f0,.g0 {border: #DDDDEE solid 1px;}
+	.c1,.e1,.f1,.g1 {border: #FFBFBF solid 1px;}
+	.c2,.e2,.f2,.g2 {border: #FF7F7F solid 1px;}
+	.c3,.e3,.f3,.g3 {border: #FF3F3F solid 1px;}
+	.e0,.e1,.e2,.e3,.g0,.g1,.g2,.g3 {border-left: #666690 solid 3px;}
+	.f0,.f1,.f2,.f3,.g0,.g1,.g2,.g3 {border-top: #666690 solid 3px;}
+
+	.i {border-collapse:collapse; border: #000000 solid 2px;}
+	.j0,.j1,.j2,.j3,.k0,.k1,.k2,.k3,.l0,.l1,.l2,.l3,.m0,.m1,.m2,.m3 {border: #000000 solid 1px;}
+	.k0,.k1,.k2,.k3,.m0,.m1,.m2,.m3 {border-left: #000000 solid 2px;}
+	.l0,.l1,.l2,.l3,.m0,.m1,.m2,.m3 {border-top: #000000 solid 2px;}
+
+	.o {border-collapse:collapse; border: #000000 solid 4px;}
+	.n0,.n1,.n2,.n3,.p0,.p1,.p2,.p3,.q0,.q1,.q2,.q3,.r0,.r1,.r2,.r3 {border: #000000 solid 2px;}
+	.p0,.p1,.p2,.p3,.r0,.r1,.r2,.r3 {border-left: #000000 solid 4px;}
+	.q0,.q1,.q2,.q3,.r0,.r1,.r2,.r3 {border-top: #000000 solid 4px;}
+
+	.gwt-Button{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.error_message{
+		color:purple;
+	}
+
+	.ft-section{
+		width:100%;overflow:hidden;
+		margin:0 0 1em;
+		margin:0 auto;
+		background:#f0e9f0;
+		padding:4px 10px;-moz-border-radius-bottomleft:3px;
+	}
+
+	h1{
+     margin-top: 25px;
+	}
+	
+	.in_text{
+		width: 40px;
+		font-size: 30px;
+	}
+
+
+label {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio:empty {
+	margin-left: -999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+	position: relative;
+	float: left;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	margin-top: 2em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+	color: #888;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #9CE2AE;
+	background-color: #4DCB6D;
+}
+
+input.radio:checked ~ label {
+	color: #777;
+}
+
+.in_radio{
+display: inline-block;
+    vertical-align: top;
+    margin-right: 3%;
+    }
+
+    </style>
+  </head>
+  <body BGCOLOR="#F0F0FF" onload="intervalhandle=window.setInterval(function() {checktimedispatcher() },10);">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Sudoku Game</a>
+          <div class="nav-collapse collapse pull-right">
+            <a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+
+      {% for greeting in greetings %}
+      <div class="row">
+        {% if greeting.author %}
+          <b>{{ greeting.author.email }}
+            {% if user and user.user_id() == greeting.author.identity %}
+              (You)
+            {% endif %}
+          </b> chose:
+        {% else %}
+         An anonymous person wrote:
+        {% endif %}
+        <blockquote>{{ greeting.content }}</blockquote>
+      </div>
+      {% endfor %}
+
+
+        <center><h1>Here is the puzzle. Good luck !</h1></center>
+        
+        <div id="info"> <font size="-2">
+        The objective of the game is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 sub-grids that compose the grid (also called "boxes", "blocks", "regions", or "sub-squares") contains all of the digits from 1 to 9. 
+        The puzzle setter provides a partially completed grid, which typically has a unique solution.
+        Completed puzzles are always a type of Latin square with an additional constraint on the contents of individual regions. 
+        For example, the same single integer may not appear twice in the same 9x9 playing board row or column or in any of the nine 3x3 subregions of the 9x9 playing board.</font>
+        </div>
+        
+        <center>
+		{% for greeting in greetings %}	
+		  {% if greeting.author %}
+        <form name="board" method=post action="/checkSudoku" method="post">
+            <TABLE CELLSPACING=0 CLASS=normal id="sudokuTable">
+                <TR>
+                    <TD CLASS=c0 ID=c00><DIV id="p11">
+						{% if greeting.author %}
+							{% if greeting.author.cells[0] == '0' %}
+								<input type="number" name="e00" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[0] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c10><DIV id="p21">{% if greeting.author %}
+							{% if greeting.author.cells[1] == '0' %}
+								<input type="number" name="e01" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[1] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c20><DIV id="p31">{% if greeting.author %}
+							{% if greeting.author.cells[2] == '0' %}
+								<input type="number" name="e02" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[2] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c30><DIV id="p41">{% if greeting.author %}
+							{% if greeting.author.cells[3] == '0' %}
+								<input type="number" name="e03" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[3] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c40><DIV id="p51">{% if greeting.author %}
+							{% if greeting.author.cells[4] == '0' %}
+								<input type="number" name="e04" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[4] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c50><DIV id="p61">{% if greeting.author %}
+							{% if greeting.author.cells[5] == '0' %}
+								<input type="number" name="e05" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[5] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c60><DIV id="p71">{% if greeting.author %}
+							{% if greeting.author.cells[6] == '0' %}
+								<input type="number" name="e06" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[6] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c70><DIV id="p81">{% if greeting.author %}
+							{% if greeting.author.cells[7] == '0' %}
+								<input type="number" name="e07" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[7] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c80><DIV id="p91">{% if greeting.author %}
+							{% if greeting.author.cells[8] == '0' %}
+								<input type="number" name="e08" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[8] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                
+                <TR>
+                    <TD CLASS=c0 ID=c01><DIV id="p12">{% if greeting.author %}
+							{% if greeting.author.cells[9] == '0' %}
+								<input type="number" name="e10" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[9] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c11><DIV id="p22">{% if greeting.author %}
+							{% if greeting.author.cells[10] == '0' %}
+								<input type="number" name="e11" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[10] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c21><DIV id="p32">{% if greeting.author %}
+							{% if greeting.author.cells[11] == '0' %}
+								<input type="number" name="e12" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[11] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c31><DIV id="p42">{% if greeting.author %}
+							{% if greeting.author.cells[12] == '0' %}
+								<input type="number" name="e13" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[12] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c41><DIV id="p52">{% if greeting.author %}
+							{% if greeting.author.cells[13] == '0' %}
+								<input type="number" name="e14" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[13] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c51><DIV id="p62">{% if greeting.author %}
+							{% if greeting.author.cells[14] == '0' %}
+								<input type="number" name="e15" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[14] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c61><DIV id="p72">{% if greeting.author %}
+							{% if greeting.author.cells[15] == '0' %}
+								<input type="number" name="e16" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[15] }}
+							{% endif %}
+						{% endif %}
+						<DIV></TD>
+                    <TD CLASS=c0 ID=c71><DIV id="p82">{% if greeting.author %}
+							{% if greeting.author.cells[16] == '0' %}
+								<input type="number" name="e17" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[16] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c81><DIV id="p92">{% if greeting.author %}
+							{% if greeting.author.cells[17] == '0' %}
+								<input type="number" name="e18" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[17] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                
+                <TR>
+                    <TD CLASS=c0 ID=c02><DIV id="p13">{% if greeting.author %}
+							{% if greeting.author.cells[18] == '0' %}
+								<input type="number" name="e20" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[18] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c12><DIV id="p23">{% if greeting.author %}
+							{% if greeting.author.cells[19] == '0' %}
+								<input type="number" name="e21" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[19] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c22><DIV id="p33">{% if greeting.author %}
+							{% if greeting.author.cells[20] == '0' %}
+								<input type="number" name="e22" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[20] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c32><DIV id="p43">{% if greeting.author %}
+							{% if greeting.author.cells[21] == '0' %}
+								<input type="number" name="e23" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[21] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c42><DIV id="p53">{% if greeting.author %}
+							{% if greeting.author.cells[22] == '0' %}
+								<input type="number" name="e24" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[22] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c52><DIV id="p63">{% if greeting.author %}
+							{% if greeting.author.cells[23] == '0' %}
+								<input type="number" name="e25" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[23] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c62><DIV id="p73">{% if greeting.author %}
+							{% if greeting.author.cells[24] == '0' %}
+								<input type="number" name="e26" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[24] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c72><DIV id="p83">{% if greeting.author %}
+							{% if greeting.author.cells[25] == '0' %}
+								<input type="number" name="e27" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[25] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c82><DIV id="p93">{% if greeting.author %}
+							{% if greeting.author.cells[26] == '0' %}
+								<input type="number" name="e28" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[26] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                
+                
+                <TR>
+                    <TD CLASS=f0 ID=c03><DIV id="p14">{% if greeting.author %}
+							{% if greeting.author.cells[27] == '0' %}
+								<input type="number" name="e30" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[27] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c13><DIV id="p24">{% if greeting.author %}
+							{% if greeting.author.cells[28] == '0' %}
+								<input type="number" name="e31" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[28] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c23><DIV id="p34">{% if greeting.author %}
+							{% if greeting.author.cells[29] == '0' %}
+								<input type="number" name="e32" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[29] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=g0 ID=c33><DIV id="p44">{% if greeting.author %}
+							{% if greeting.author.cells[30] == '0' %}
+								<input type="number" name="e33" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[30] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c43><DIV id="p54">{% if greeting.author %}
+							{% if greeting.author.cells[31] == '0' %}
+								<input type="number" name="e34" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[31] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c53><DIV id="p64">{% if greeting.author %}
+							{% if greeting.author.cells[32] == '0' %}
+								<input type="number" name="e35" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[32] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=g0 ID=c63><DIV id="p74">{% if greeting.author %}
+							{% if greeting.author.cells[33] == '0' %}
+								<input type="number" name="e36" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[33] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c73><DIV id="p84">{% if greeting.author %}
+							{% if greeting.author.cells[34] == '0' %}
+								<input type="number" name="e37" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[34] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c83><DIV id="p94">{% if greeting.author %}
+							{% if greeting.author.cells[35] == '0' %}
+								<input type="number" name="e38" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[35] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                <TR>
+                    <TD CLASS=c0 ID=c04><DIV id="p15">{% if greeting.author %}
+							{% if greeting.author.cells[36] == '0' %}
+								<input type="number" name="e40" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[36] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c14><DIV id="p25">{% if greeting.author %}
+							{% if greeting.author.cells[37] == '0' %}
+								<input type="number" name="e41" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[37] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c24><DIV id="p35">{% if greeting.author %}
+							{% if greeting.author.cells[38] == '0' %}
+								<input type="number" name="e42" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[38] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c34><DIV id="p45">{% if greeting.author %}
+							{% if greeting.author.cells[39] == '0' %}
+								<input type="number" name="e43" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[39] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c44><DIV id="p55">{% if greeting.author %}
+							{% if greeting.author.cells[40] == '0' %}
+								<input type="number" name="e44" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[40] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c54><DIV id="p65">{% if greeting.author %}
+							{% if greeting.author.cells[41] == '0' %}
+								<input type="number" name="e45" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[41] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c64><DIV id="p75">{% if greeting.author %}
+							{% if greeting.author.cells[42] == '0' %}
+								<input type="number" name="e46" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[42] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c74><DIV id="p85">{% if greeting.author %}
+							{% if greeting.author.cells[43] == '0' %}
+								<input type="number" name="e47" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[43] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c84><DIV id="p95">{% if greeting.author %}
+							{% if greeting.author.cells[44] == '0' %}
+								<input type="number" name="e48" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[44] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                <TR>
+                    <TD CLASS=c0 ID=c05><DIV id="p16">{% if greeting.author %}
+							{% if greeting.author.cells[45] == '0' %}
+								<input type="number" name="e50" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[45] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c15><DIV id="p26">{% if greeting.author %}
+							{% if greeting.author.cells[46] == '0' %}
+								<input type="number" name="e51" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[46] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c25><DIV id="p36">{% if greeting.author %}
+							{% if greeting.author.cells[47] == '0' %}
+								<input type="number" name="e52" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[47] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c35><DIV id="p46">{% if greeting.author %}
+							{% if greeting.author.cells[48] == '0' %}
+								<input type="number" name="e53" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[48] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c45><DIV id="p56">{% if greeting.author %}
+							{% if greeting.author.cells[49] == '0' %}
+								<input type="number" name="e54" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[49] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c55><DIV id="p66">{% if greeting.author %}
+							{% if greeting.author.cells[50] == '0' %}
+								<input type="number" name="e55" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[50] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c65><DIV id="p76">{% if greeting.author %}
+							{% if greeting.author.cells[51] == '0' %}
+								<input type="number" name="e56" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[51] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c75><DIV id="p86">{% if greeting.author %}
+							{% if greeting.author.cells[52] == '0' %}
+								<input type="number" name="e57" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[52] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c85><DIV id="p96">{% if greeting.author %}
+							{% if greeting.author.cells[53] == '0' %}
+								<input type="number" name="e58" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[53] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                
+                
+                <TR>
+                    <TD CLASS=f0 ID=c06><DIV id="p17">{% if greeting.author %}
+							{% if greeting.author.cells[54] == '0' %}
+								<input type="number" name="e60" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[54] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c16><DIV id="p27">{% if greeting.author %}
+							{% if greeting.author.cells[55] == '0' %}
+								<input type="number" name="e61" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[55] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c26><DIV id="p37">{% if greeting.author %}
+							{% if greeting.author.cells[56] == '0' %}
+								<input type="number" name="e62" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[56] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=g0 ID=c36><DIV id="p47">{% if greeting.author %}
+							{% if greeting.author.cells[57] == '0' %}
+								<input type="number" name="e63" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[57] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c46><DIV id="p57">{% if greeting.author %}
+							{% if greeting.author.cells[58] == '0' %}
+								<input type="number" name="e64" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[58] }}
+							{% endif %}
+						{% endif %}</DIV></TD>
+                    <TD CLASS=f0 ID=c56><DIV id="p67">{% if greeting.author %}
+							{% if greeting.author.cells[59] == '0' %}
+								<input type="number" name="e65" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[59] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=g0 ID=c66><DIV id="p77">{% if greeting.author %}
+							{% if greeting.author.cells[60] == '0' %}
+								<input type="number" name="e66" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[60] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c76><DIV id="p87">{% if greeting.author %}
+							{% if greeting.author.cells[61] == '0' %}
+								<input type="number" name="e67" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[61] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=f0 ID=c86><DIV id="p97">{% if greeting.author %}
+							{% if greeting.author.cells[62] == '0' %}
+								<input type="number" name="e68" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[62] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                
+                <TR>
+                    <TD CLASS=c0 ID=c07><DIV id="p18">{% if greeting.author %}
+							{% if greeting.author.cells[63] == '0' %}
+								<input type="number" name="e70" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[63] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c17><DIV id="p28">{% if greeting.author %}
+							{% if greeting.author.cells[64] == '0' %}
+								<input type="number" name="e71" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[64] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c27><DIV id="p38">{% if greeting.author %}
+							{% if greeting.author.cells[65] == '0' %}
+								<input type="number" name="e72" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[65] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c37><DIV id="p48">{% if greeting.author %}
+							{% if greeting.author.cells[66] == '0' %}
+								<input type="number" name="e73" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[66] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c47><DIV id="p58">{% if greeting.author %}
+							{% if greeting.author.cells[67] == '0' %}
+								<input type="number" name="e74" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[67] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c57><DIV id="p68">{% if greeting.author %}
+							{% if greeting.author.cells[68] == '0' %}
+								<input type="number" name="e75" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[68] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c67><DIV id="p78">{% if greeting.author %}
+							{% if greeting.author.cells[69] == '0' %}
+								<input type="number" name="e76" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[69] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c77><DIV id="p88">{% if greeting.author %}
+							{% if greeting.author.cells[70] == '0' %}
+								<input type="number" name="e77" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[70] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c87><DIV id="p98">{% if greeting.author %}
+							{% if greeting.author.cells[71] == '0' %}
+								<input type="number" name="e78" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[71] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                <TR>
+                    <TD CLASS=c0 ID=c08><DIV id="p19">{% if greeting.author %}
+							{% if greeting.author.cells[72] == '0' %}
+								<input type="number" name="e80" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[72] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c18><DIV id="p29">{% if greeting.author %}
+							{% if greeting.author.cells[73] == '0' %}
+								<input type="number" name="e81" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[73] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c28><DIV id="p39">{% if greeting.author %}
+							{% if greeting.author.cells[74] == '0' %}
+								<input type="number" name="e82" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[74] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c38><DIV id="p49">{% if greeting.author %}
+							{% if greeting.author.cells[75] == '0' %}
+								<input type="number" name="e83" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[75] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c48><DIV id="p59">{% if greeting.author %}
+							{% if greeting.author.cells[76] == '0' %}
+								<input type="number" name="e84" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[76] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c58><DIV id="p69">{% if greeting.author %}
+							{% if greeting.author.cells[77] == '0' %}
+								<input type="number" name="e85" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[77] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=e0 ID=c68><DIV id="p79">{% if greeting.author %}
+							{% if greeting.author.cells[78] == '0' %}
+								<input type="number" name="e86" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[78] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c78><DIV id="p89">{% if greeting.author %}
+							{% if greeting.author.cells[79] == '0' %}
+								<input type="number" name="e87" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[79] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                    <TD CLASS=c0 ID=c88><DIV id="p99">{% if greeting.author %}
+							{% if greeting.author.cells[80] == '0' %}
+								<input type="number" name="e88" class="in_text" >
+							{% else %}
+								{{ greeting.author.cells[80] }}
+							{% endif %}
+						{% endif %}
+						</DIV></TD>
+                </TR>
+                
+            </TABLE>
+            
+            <br>
+           
+           <div style="width:640px;margin-left:auto; margin-right:auto;text-align:center;color:black;background-color:#F0F0FF"><p align="center">TIME elapsed: 
+<br>HOURS: <span id="hourelement">0</span><br>MINUTES: <span id="minuteelement">0</span><br>SECONDS: <span id="secondelement">0</span></p></div>
+
+
+     
+            <br>
+	   
+	
+	
+            <input type="submit" class="btn btn-large btn-primary" name="checkSudoku" value="Submit solution">
+            
+            
+            </form>
+            {% endif %}
+            {% endfor %}
+            
+            
+        
+        </center>
+      <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
+	<fieldset>
+        <div class="in_radio">
+	<input type="radio" name="content" id="radio1" class="radio" value="Easy" checked />
+	<label for="radio1">Easy</label>
+	</div>
+
+	<div class="in_radio">
+	<input type="radio" name="content" id="radio2" class="radio" value="Medium" />
+	<label for="radio2">Medium</label>
+	</div>
+
+	<div class="in_radio">
+	<input type="radio" name="content" id="radio3" class="radio" value="Difficult"/>
+	<label for="radio3">Difficult</label>
+	
+	</div>
+	
+	<br>
+	<br>
+	
+	<div><input type="submit" class="btn btn-large btn-primary" value="Choose Easy or Difficult"></div>
+        <div>
+        </fieldset>
+      </form>
+
+      <hr>
+
+
+    </div>
+  </body>
+</html>
+{% endautoescape %}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+{% autoescape true %}
+
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+      blockquote {
+        margin-bottom: 10px;
+        border-left-color: #bbb;
+      }
+      form {
+        margin-top: 10px;
+      }
+      .form-signin input[type="text"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+      .row {
+        margin-left: 0px;
+        margin-top: 10px;
+        overflow: scroll;
+      }
+      
+      root { 
+		display: block;
+	}
+
+	body {margin:1pt;}
+	body,td,.plain {font-family:arial,sans-serif; color:#222222; font-size:12pt;}
+	.tm {margin-top: 8pt; margin-bottom:0;}
+	table,td {padding:0pt;}
+	.stat {color:#990000; font-size:10pt; font-weight:bold;}
+	.reset {font-size:8pt; color:#990000;}
+	input.reset {border:solid 1px; background-color:transparent; padding:0pt;}
+
+	a:link,a:active,a:visited {color:#3333FF; text-decoration:none;}
+
+
+	.d0,.d1,.d2,.d3,.s0,.s1,.s2,.s3,.u0,.u1,.u2,.u3,.w0,.w1,.w2,.w3,.v0,.v1,.v2,.v3 {border: solid 0 #fff; text-align:center; margin: 0pt; width:24pt;}
+	.s0,.s1,.s2,.s3 {font-size:18pt; font-family:times,"times new roman",serif; color:#000000;}
+	.u0,.u1,.u2,.u3 {font-size:28pt; font-family:times,"times new roman",serif; color:#000000;}
+	.d0,.d1,.d2,.d3 {font-size:16pt; font-family:"lucida handwriting","comic sans ms",cursive; color:#7777DD;}
+	.w0,.w1,.w2,.w3 {font-size:10pt; font-family:"lucida handwriting","comic sans ms",cursive; color:#338833;}
+	.v0,.v1,.v2,.v3 {font-size:7pt; font-family:"lucida handwriting","comic sans ms",cursive; color:#338833;}
+
+	.d0,.s0,.u0,.w0,.v0 {background-color: transparent;}
+
+	.d1,.s1,.u1,.w1,.v1,.c1,.e1,.f1,.g1,.j1,.k1,.l1,.m1,.n1,.p1,.q1,.r1 {background-color: #FFBFBF;}
+	.d2,.s2,.u2,.w2,.v2,.c2,.e2,.f2,.g2,.j2,.k2,.l2,.m2,.n2,.p2,.q2,.r2 {background-color: #FF7F7F;}
+	.d3,.s3,.u3,.w3,.v3,.c3,.e3,.f3,.g3,.j3,.k3,.l3,.m3,.n3,.p3,.q3,.r3 {background-color: #FF3F3F;}
+
+	.c0,.c1,.c2,.c3,.e0,.e1,.e2,.e3,.f0,.f1,.f2,.f3,.g0,.g1,.g2,.g3 {width:35pt; height:40pt; vertical-align:middle; text-align:center; font-size:18pt; font-family:times,serif;}
+	.j0,.j1,.j2,.j3,.k0,.k1,.k2,.k3,.l0,.l1,.l2,.l3,.m0,.m1,.m2,.m3 {width:32pt; height:32pt; vertical-align:middle; text-align:center; font-size:18pt; font-family:times,serif;}
+	.n0,.n1,.n2,.n3,.p0,.p1,.p2,.p3,.q0,.q1,.q2,.q3,.r0,.r1,.r2,.r3 {width:44pt; height:44pt; vertical-align:middle; text-align:center; font-size:28pt; font-family:times,serif;}
+
+	.normal {border-collapse:collapse; border: #666699 solid 3px; background-color:#FFFFFF;}
+	.pause {border-collapse:collapse; border: #666699 solid 3px; background-color:#7777DD;}
+	.c0,.e0,.f0,.g0 {border: #DDDDEE solid 1px;}
+	.c1,.e1,.f1,.g1 {border: #FFBFBF solid 1px;}
+	.c2,.e2,.f2,.g2 {border: #FF7F7F solid 1px;}
+	.c3,.e3,.f3,.g3 {border: #FF3F3F solid 1px;}
+	.e0,.e1,.e2,.e3,.g0,.g1,.g2,.g3 {border-left: #666690 solid 3px;}
+	.f0,.f1,.f2,.f3,.g0,.g1,.g2,.g3 {border-top: #666690 solid 3px;}
+
+	.i {border-collapse:collapse; border: #000000 solid 2px;}
+	.j0,.j1,.j2,.j3,.k0,.k1,.k2,.k3,.l0,.l1,.l2,.l3,.m0,.m1,.m2,.m3 {border: #000000 solid 1px;}
+	.k0,.k1,.k2,.k3,.m0,.m1,.m2,.m3 {border-left: #000000 solid 2px;}
+	.l0,.l1,.l2,.l3,.m0,.m1,.m2,.m3 {border-top: #000000 solid 2px;}
+
+	.o {border-collapse:collapse; border: #000000 solid 4px;}
+	.n0,.n1,.n2,.n3,.p0,.p1,.p2,.p3,.q0,.q1,.q2,.q3,.r0,.r1,.r2,.r3 {border: #000000 solid 2px;}
+	.p0,.p1,.p2,.p3,.r0,.r1,.r2,.r3 {border-left: #000000 solid 4px;}
+	.q0,.q1,.q2,.q3,.r0,.r1,.r2,.r3 {border-top: #000000 solid 4px;}
+
+	.gwt-Button{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.error_message{
+		color:purple;
+	}
+
+	.ft-section{
+		width:100%;overflow:hidden;
+		margin:0 0 1em;
+		margin:0 auto;
+		background:#f0e9f0;
+		padding:4px 10px;-moz-border-radius-bottomleft:3px;
+	}
+
+	h1{
+     margin-top: 25px;
+	}
+      
+      a:link    {color:green; background-color:transparent; text-decoration:none}
+      a:visited {color:pink; background-color:transparent; text-decoration:none}
+      a:hover   {color:red; background-color:transparent; text-decoration:underline}
+      a:active  {color:yellow; background-color:transparent; text-decoration:underline}
+	
+    </style>
+  </head>
+  <body BGCOLOR="#F0F0FF">
+    
+    {% if flag == True %}
+    <center><h1>You solved the puzzle. Kudos! </h1></center>
+    {% else %}
+    <center><h1>Sorry. You're incorrect. The solutin was : </h1>
+     <TABLE CELLSPACING=0 CLASS=normal id="sudokuTable">
+                <TR>
+                    <TD CLASS=c0 ID=c00><DIV id="p11">{{ sol_cells[0] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c10><DIV id="p21">{{ sol_cells[1] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c20><DIV id="p31">{{ sol_cells[2] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c30><DIV id="p41">{{ sol_cells[3] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c40><DIV id="p51">{{ sol_cells[4] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c50><DIV id="p61">{{ sol_cells[5] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c60><DIV id="p71">{{ sol_cells[6] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c70><DIV id="p81">{{ sol_cells[7] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c80><DIV id="p91">{{ sol_cells[8] }}</DIV></TD>
+                </TR>
+                
+                <TR>
+                    <TD CLASS=c0 ID=c01><DIV id="p12">{{ sol_cells[9] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c11><DIV id="p22">{{ sol_cells[10] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c21><DIV id="p32">{{ sol_cells[11] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c31><DIV id="p42">{{ sol_cells[12] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c41><DIV id="p52">{{ sol_cells[13] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c51><DIV id="p62">{{ sol_cells[14] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c61><DIV id="p72">{{ sol_cells[15] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c71><DIV id="p82">{{ sol_cells[16] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c81><DIV id="p92">{{ sol_cells[17] }}</DIV></TD>
+                </TR>
+                
+                <TR>
+                    <TD CLASS=c0 ID=c02><DIV id="p13">{{ sol_cells[18] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c12><DIV id="p23">{{ sol_cells[19] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c22><DIV id="p33">{{ sol_cells[20] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c32><DIV id="p43">{{ sol_cells[21] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c42><DIV id="p53">{{ sol_cells[22] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c52><DIV id="p63">{{ sol_cells[23] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c62><DIV id="p73">{{ sol_cells[24] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c72><DIV id="p83">{{ sol_cells[25] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c82><DIV id="p93">{{ sol_cells[26] }}</DIV></TD>
+                </TR>
+                
+                
+                <TR>
+                    <TD CLASS=f0 ID=c03><DIV id="p14">{{ sol_cells[27] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c13><DIV id="p24">{{ sol_cells[28] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c23><DIV id="p34">{{ sol_cells[29] }}</DIV></TD>
+                    <TD CLASS=g0 ID=c33><DIV id="p44">{{ sol_cells[30] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c43><DIV id="p54">{{ sol_cells[31] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c53><DIV id="p64">{{ sol_cells[32] }}</DIV></TD>
+                    <TD CLASS=g0 ID=c63><DIV id="p74">{{ sol_cells[33] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c73><DIV id="p84">{{ sol_cells[34] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c83><DIV id="p94">{{ sol_cells[35] }}</DIV></TD>
+                </TR>
+                <TR>
+                    <TD CLASS=c0 ID=c04><DIV id="p15">{{ sol_cells[36] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c14><DIV id="p25">{{ sol_cells[37] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c24><DIV id="p35">{{ sol_cells[38] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c34><DIV id="p45">{{ sol_cells[39] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c44><DIV id="p55">{{ sol_cells[40] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c54><DIV id="p65">{{ sol_cells[41] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c64><DIV id="p75">{{ sol_cells[42] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c74><DIV id="p85">{{ sol_cells[43] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c84><DIV id="p95">{{ sol_cells[44] }}</DIV></TD>
+                </TR>
+                <TR>
+                    <TD CLASS=c0 ID=c05><DIV id="p16">{{ sol_cells[45] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c15><DIV id="p26">{{ sol_cells[46] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c25><DIV id="p36">{{ sol_cells[47] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c35><DIV id="p46">{{ sol_cells[48] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c45><DIV id="p56">{{ sol_cells[49] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c55><DIV id="p66">{{ sol_cells[50] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c65><DIV id="p76">{{ sol_cells[51] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c75><DIV id="p86">{{ sol_cells[52] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c85><DIV id="p96">{{ sol_cells[53] }}</DIV></TD>
+                </TR>
+                
+                
+                <TR>
+                    <TD CLASS=f0 ID=c06><DIV id="p17">{{ sol_cells[54] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c16><DIV id="p27">{{ sol_cells[55] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c26><DIV id="p37">{{ sol_cells[56] }}</DIV></TD>
+                    <TD CLASS=g0 ID=c36><DIV id="p47">{{ sol_cells[57] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c46><DIV id="p57">{{ sol_cells[58] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c56><DIV id="p67">{{ sol_cells[59] }}</DIV></TD>
+                    <TD CLASS=g0 ID=c66><DIV id="p77">{{ sol_cells[60] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c76><DIV id="p87">{{ sol_cells[61] }}</DIV></TD>
+                    <TD CLASS=f0 ID=c86><DIV id="p97">{{ sol_cells[62] }}</DIV></TD>
+                </TR>
+                
+                <TR>
+                    <TD CLASS=c0 ID=c07><DIV id="p18">{{ sol_cells[63] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c17><DIV id="p28">{{ sol_cells[64] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c27><DIV id="p38">{{ sol_cells[65] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c37><DIV id="p48">{{ sol_cells[66] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c47><DIV id="p58">{{ sol_cells[67] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c57><DIV id="p68">{{ sol_cells[68] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c67><DIV id="p78">{{ sol_cells[69] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c77><DIV id="p88">{{ sol_cells[70] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c87><DIV id="p98">{{ sol_cells[71] }}</DIV></TD>
+                </TR>
+                <TR>
+                    <TD CLASS=c0 ID=c08><DIV id="p19">{{ sol_cells[72] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c18><DIV id="p29">{{ sol_cells[73] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c28><DIV id="p39">{{ sol_cells[74] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c38><DIV id="p49">{{ sol_cells[75] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c48><DIV id="p59">{{ sol_cells[76] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c58><DIV id="p69">{{ sol_cells[77] }}</DIV></TD>
+                    <TD CLASS=e0 ID=c68><DIV id="p79">{{ sol_cells[78] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c78><DIV id="p89">{{ sol_cells[79] }}</DIV></TD>
+                    <TD CLASS=c0 ID=c88><DIV id="p99">{{ sol_cells[80] }}</DIV></TD>
+                </TR>
+                
+            </TABLE>
+</center>
+    {% endif %}
+    
+    <br>
+    <br>
+    <div class="test">
+   
+    </div>
+    <div style="text-align:center">
+	<a href="http://kishalay-sudoku.appspot.com/"> <font size="20">Solve another Sudoku</font></a>
+    </div>
+    
+  </body>
+  
+  </html>
+  
+  {% endautoescape %}
